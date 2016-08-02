@@ -1,17 +1,14 @@
+import { Template } from 'meteor/templating';
+
 Template.body.events({
-	'click #submitButton':function(event,template){
-		event.preventDefault();
-		
-		let exclamation = template.find("exclamation").value;
-		/*let adverb = template.find(#adverb).value;
-		let noun = template.find(#noun).value;
-		let verb = template.find(#verb).value;
+  'submit .form-horizontal'(event, template) {
+    event.preventDefault();
 
-		let madlib = '/"' + exclamation + '!/" you say, as you ' + adverb + ' jump onto your ' +
-					 noun + ' and ' + verb + ', into the sunset/"';*/
-		Session.set('exclamation', exclamation);
-		console.log(exclamation);
-	},
-
+    // console.log('Hello, world');
+    const exclamation = template.find("input[name=exclamation]").value;
+    const adverb = template.find("input[name=adverb]").value;
+    const noun = template.find("input[name=noun]").value;
+    const verb = template.find("input[name=verb]").value;
+    console.log(`"${exclamation}", you say as you ${adverb} jump onto your ${noun} and ${verb} off into the sunset`);
+  },
 });
-
